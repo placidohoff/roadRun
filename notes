@@ -1,0 +1,5 @@
+..*Container: A collection of objects that we can treat as a single object. Very useful in this game as the road will contain all of our objects. So as we move the road, we move all the smaller objects within it.
+
+
+***Moving Lines, Getting Lines to Repeat***
+..*We save the ori
