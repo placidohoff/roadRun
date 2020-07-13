@@ -28,6 +28,12 @@ class SceneMain extends Phaser.Scene {
         this.sb = new ScoreBox({scene: this});
         this.sb.x = game.config.width -50;
         this.sb.y = 50;
+        //this.sb.setOrigin(0,0)
+
+        this.alignGrid = new AlignGrid({scene:this,rows:5, cols:5})
+        this.alignGrid.showNumbers();
+
+        this.alignGrid.placeAtIndex(9, this.sb);
 
         
     }
