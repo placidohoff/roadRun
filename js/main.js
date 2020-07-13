@@ -28,7 +28,7 @@ window.onload = () => {
             height: 640,
             parent: 'phaser-game',
             backgroundColor: '000',
-            scene: [SceneMain]
+            scene: [SceneTitle, SceneMain, SceneOver]
         }
 
     }
@@ -40,7 +40,7 @@ window.onload = () => {
             height: window.innerHeight,
             parent: 'phaser-game',
             backgroundColor: '000',
-            scene: [SceneMain]
+            scene: [SceneTitle,SceneMain, SceneOver]
         }
     }
     G = new Constants();
