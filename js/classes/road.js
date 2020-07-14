@@ -7,6 +7,7 @@ class Road extends Phaser.GameObjects.Container{
         this.back = this.scene.add.image(0, 0, "road");
         this.add(this.back);
         this.scene.add.existing(this);
+        //model.gameOver = false;
 
         //We want to have two roads on the screen at once, so we scale down the width by half:
         // this.back.displayWidth = game.config.width * .5;
@@ -125,6 +126,14 @@ class Road extends Phaser.GameObjects.Container{
                                         duration: 1000, 
                                         y:game.config.height,
                                         angle: 270})
+
+                //Add a timed event to restart the game:
+                this.scene.time.addEvent({
+                    delay: 2000,
+                    callback: this.goGameOver,
+                    callbackScope: this.scene,
+                    loop: false
+                })
                 
             }else{
                 this.car.alpha = 1;
@@ -136,5 +145,8 @@ class Road extends Phaser.GameObjects.Container{
                 this.addObstacle();
             }
         }
+    }
+    goGameOver(){
+        this.scene.start("SceneOver");
     }
 }

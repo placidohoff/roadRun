@@ -37,6 +37,8 @@ class SceneMain extends Phaser.Scene {
         this.road = new Road({scene:this})
         this.road.x = game.config.width / 2;
 
+        model.gameOver = false;
+
         this.road.makeLines();
 
         //The following comes from our Toolbox to implement the scoreBox:
