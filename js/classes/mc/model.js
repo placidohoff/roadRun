@@ -9,7 +9,7 @@ class Model
     set musicOn(val)
     {
         this._musicOn = val;
-        emitter.emit(G.MUSIC_CHANGED);
+        emitter.emit(G.MUSIC_CHANGED, this);
     }
     get musicOn()
     {

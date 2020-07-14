@@ -27,6 +27,10 @@ class SceneMain extends Phaser.Scene {
         this.load.image("toggle5", "assets/buttons/toggles/toggles/5.png");
         this.load.image("toggle6", "assets/buttons/toggles/toggles/6.png");
 
+        this.load.audio("backgroundMusic", ["assets/audio/random-race.mp3", "assets/audio/random-race.ogg"])
+        this.load.audio("boom", ["assets/audio/boom.mp3", "assets/audio/boom.ogg"])
+        this.load.audio("whoosh", ["assets/audio/whoosh.mp3", "assets/audio/whoosh.ogg"])
+
     }
     create(){
         //Using 'This' to define and access road makes it a "state variable", which is essentially global without having to define it as such 
@@ -39,6 +43,9 @@ class SceneMain extends Phaser.Scene {
         emitter = new Phaser.Events.EventEmitter();      
         controller = new Controller();
 
+        //TODO: Get sound playing, create an instance of MediaManager:
+        let mediaManager = new MediaManager({scene: this})
+
         this.sb = new ScoreBox({scene: this});
         this.sb.x = game.config.width -50;
         this.sb.y = 50;
@@ -50,6 +57,7 @@ class SceneMain extends Phaser.Scene {
         this.alignGrid.placeAtIndex(9, this.sb);
 
         let soundButtons = new SoundButtons({scene:this})
+        //let mediaManage = new MediaManager({scene:this})
     }
     update(){
         this.road.moveLines();

@@ -40,11 +40,19 @@ class Road extends Phaser.GameObjects.Container{
 
     //Had an 'undefined' error when this was called with no 'context'
     changeLanes(){
-        //If on the right, go left, vice versa:
-        if(this.car.x > 0){
-            this.car.x = -this.displayWidth/4;
-        }else{
-            this.car.x = this.displayWidth/4;
+        if(!model.gameOver){
+            //PLAY-SOUND LOGIC:
+            emitter.emit(G.PLAY_SOUND, "whoosh")
+            //If on the right, go left, vice versa:
+            if(this.car.x > 0){
+                this.car.x = -this.displayWidth/4;
+            }else{
+                this.car.x = this.displayWidth/4;
+            }
+        }
+        else{
+            model.gameOver = false;
+            game.scene.start('SceneMain')
         }
     }
 
@@ -60,22 +68,24 @@ class Road extends Phaser.GameObjects.Container{
     }
 
     moveLines(){
-        //We use 'itterate' which is specific to groups.
-            //It also makes use of '.bind(this) which allows us to use keyword 'this' which will refer to the scene instead of normally it would refer to the group. We want 'this' to refer to the scene:
+        if(!model.gameOver){
+            //We use 'itterate' which is specific to groups.
+                //It also makes use of '.bind(this) which allows us to use keyword 'this' which will refer to the scene instead of normally it would refer to the group. We want 'this' to refer to the scene:
 
-        this.lineGroup.children.iterate(function(child){
-            //Manage the speed via '/20'
-            child.y += this.vSpace /gameOptions.vSpaceMod;
-        }.bind(this));
-        //repeat lines logic:
-            //Every twenty times a child moves.
-        this.count++;
-        if(this.count == 20){
-            this.count = 0;
             this.lineGroup.children.iterate(function(child){
-                //set each child back to its original position to scroll again.
-                child.y = child.oy
+                //Manage the speed via '/20'
+                child.y += this.vSpace /gameOptions.vSpaceMod;
             }.bind(this));
+            //repeat lines logic:
+                //Every twenty times a child moves.
+            this.count++;
+            if(this.count == 20){
+                this.count = 0;
+                this.lineGroup.children.iterate(function(child){
+                    //set each child back to its original position to scroll again.
+                    child.y = child.oy
+                }.bind(this));
+            }
         }
     }
 
@@ -103,17 +113,21 @@ class Road extends Phaser.GameObjects.Container{
         Align.scaleToGameW(this.object, scale);
     }
     moveObstacle(){
-        this.object.y += this.vSpace / this.object.speed;
-        if(Collision.checkCollide(this.car, this.object)){
-            this.car.alpha = .5;
-        }else{
-            this.car.alpha = 1;
-        }
-        if(this.object.y > game.config.height){
-            //For each obstacle passed, we emit a 'UP_SCORE' Event:
-            emitter.emit(G.UP_POINTS, 1);
-            this.object.destroy();
-            this.addObstacle();
+        if(!model.gameOver){
+            this.object.y += this.vSpace / this.object.speed;
+            if(Collision.checkCollide(this.car, this.object)){
+                this.car.alpha = .5;
+                emitter.emit(G.PLAY_SOUND, "boom");
+                model.gameOver = true;
+            }else{
+                this.car.alpha = 1;
+            }
+            if(this.object.y > game.config.height){
+                //For each obstacle passed, we emit a 'UP_SCORE' Event:
+                emitter.emit(G.UP_POINTS, 1);
+                this.object.destroy();
+                this.addObstacle();
+            }
         }
     }
 }

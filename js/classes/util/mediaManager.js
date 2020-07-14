@@ -18,7 +18,7 @@ class MediaManager
         }
     }
     playSound(key){
-        if(model.soundOn){
+        if(model._soundOn){
             let sound = this.scene.sound.add(key);
             sound.play();
         }

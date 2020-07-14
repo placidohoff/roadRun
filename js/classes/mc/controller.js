@@ -8,16 +8,17 @@ class Controller
         emitter.on(G.UP_POINTS, this.upPoints);
         emitter.on(G.TOGGLE_SOUND, this.toggleSound)
         emitter.on(G.TOGGLE_MUSIC, this.toggleMusic);
+        //emitter.on(G.PLAY_SOUND, this.playSound)
     }
     toggleSound(val){
-        model.soundOn = val;
+        model._soundOn = val;
     }
     toggleMusic(val){
-        model.musicOn = val;
+        model._musicOn = val;
     }
     setScore(score)
     {
-        model.score = score;
+        model._score = score;
     }
     upPoints(points)
     {
@@ -26,5 +27,11 @@ class Controller
         let score = model.score;
         score += points;
         model.score = score;
+    }
+    playSound(key){
+        // if(model._soundOn){
+        //     let sound = this.scene.sound.add(key);
+        //     sound.play();
+        // }
     }
 }
