@@ -46,8 +46,9 @@ window.onload = () => {
     G = new Constants();
     model = new Model();
     game = new Phaser.Game(config);
-    //this.scene.add(sceneMain)
+
 }
+
 
 
 

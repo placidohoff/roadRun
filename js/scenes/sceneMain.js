@@ -16,6 +16,8 @@ class SceneMain extends Phaser.Scene {
         this.road2.x = game.config.width * .75;
 
         model.gameOver = false;
+        model.speed = 1;
+        model._score = 0;
 
         this.road.makeLines();
         this.road2.makeLines();
@@ -43,6 +45,15 @@ class SceneMain extends Phaser.Scene {
 
         let soundButtons = new SoundButtons({scene:this})
         //let mediaManage = new MediaManager({scene:this})
+        
+        emitter.on(G.SCORE_UPDATED, this.scoreUpdated, this)
+    }
+    scoreUpdated(){
+        if(model._score / 5 == Math.floor(model._score/5)){
+            model.speed += .25;
+            if(model.speed > 1.5)
+                model.speed =1.5
+        }
     }
     update(){
         this.road.moveLines();
