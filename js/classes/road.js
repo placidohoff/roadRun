@@ -119,6 +119,13 @@ class Road extends Phaser.GameObjects.Container{
                 this.car.alpha = .5;
                 emitter.emit(G.PLAY_SOUND, "boom");
                 model.gameOver = true;
+
+                //Add Crash Animation:
+                this.scene.tweens.add({targets: this.car, 
+                                        duration: 1000, 
+                                        y:game.config.height,
+                                        angle: 270})
+                
             }else{
                 this.car.alpha = 1;
             }
