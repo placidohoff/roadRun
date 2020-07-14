@@ -3,8 +3,7 @@ class SceneTitle extends Phaser.Scene{
         super('SceneTitle')
     }
     preload(){
-        this.load.image("title", "assets/title.png");
-        this.load.image("button1", "assets/ui/ui/buttons/2/1.png");
+        
     }
     create(){
         //alert("hello")
@@ -30,6 +29,7 @@ class SceneTitle extends Phaser.Scene{
     }
 
     startGame(){
+        
         this.scene.start('SceneMain');
     }
 }

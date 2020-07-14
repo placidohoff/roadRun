@@ -25,8 +25,8 @@ class MediaManager
        
     }
     setBackgroundMusic(key){
-        if(model.musicOn){
-            this.background = this.scene.sound.add(key, {volume:5, loop:true});
+        if(model.musicOn && !this.background){
+            this.background = this.scene.sound.add(key, {volume:3, loop:true});
             this.background.play();
         }
         

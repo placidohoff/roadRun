@@ -20,12 +20,14 @@ class SceneOver extends Phaser.Scene{
 
         emitter.on("start_game", this.startGame, this)
         //alert("hello");
+
     }
     update(){
 
     }
 
     startGame(){
+        emitter.emit(G.MUSIC_CHANGED)
         this.scene.start('SceneMain');
     }
 }
