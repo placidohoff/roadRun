@@ -32,14 +32,14 @@ class SceneMain extends Phaser.Scene {
         //emitter.on(G.MUSIC_STOP, this.stopMusic);
 
         this.sb = new ScoreBox({scene: this});
-        this.sb.x = game.config.width -50;
-        this.sb.y = 50;
+        this.sb.x = game.config.width / 2;
+        this.sb.y = game.config.height / 2;
         //this.sb.setOrigin(0,0)
 
-        this.alignGrid = new AlignGrid({scene:this,rows:5, cols:5})
-        this.alignGrid.showNumbers();
+        //this.alignGrid = new AlignGrid({scene:this,rows:5, cols:5})
+        //this.alignGrid.showNumbers();
 
-        this.alignGrid.placeAtIndex(9, this.sb);
+        //this.alignGrid.placeAtIndex(9, this.sb);
 
         let soundButtons = new SoundButtons({scene:this})
         //let mediaManage = new MediaManager({scene:this})
