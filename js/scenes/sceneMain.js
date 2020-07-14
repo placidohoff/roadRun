@@ -10,11 +10,17 @@ class SceneMain extends Phaser.Scene {
     create(){
         //Using 'This' to define and access road makes it a "state variable", which is essentially global without having to define it as such 
         this.road = new Road({scene:this})
-        this.road.x = game.config.width / 2;
+        this.road.x = game.config.width * .25;
+
+        this.road2 = new Road({scene:this})
+        this.road2.x = game.config.width * .75;
 
         model.gameOver = false;
 
         this.road.makeLines();
+        this.road2.makeLines();
+
+        this.road2.car.setFrame(1);
 
         //The following comes from our Toolbox to implement the scoreBox:
         emitter = new Phaser.Events.EventEmitter();      
@@ -41,6 +47,8 @@ class SceneMain extends Phaser.Scene {
     update(){
         this.road.moveLines();
         this.road.moveObstacle();
+        this.road2.moveObstacle();
+        this.road2.moveObstacle();
     }
     stopMusic(){
         this.mediaManager.stop();
