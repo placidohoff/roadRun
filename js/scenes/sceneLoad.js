@@ -10,6 +10,7 @@ class SceneLoad extends Phaser.Scene{
         this.load.on('progress', this.onProgress, this);
 
         this.load.image("road", "assets/road.jpg")
+        this.load.image("titleBack", "assets/titleBack.jpg")
         this.load.spritesheet("cars", "assets/cars.png", {frameWidth: 60, frameHeight:126})
         this.load.image("line", "assets/line.png");
         //Obstacles:

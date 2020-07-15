@@ -12,17 +12,17 @@ class FlatButton extends Phaser.GameObjects.Container
         }
         super(config.scene);
 
-        this.x = this.y = 0;
-        if(config.x){
+        //this.x = this.y = 100;
+        //if(config.x){
             this.x = config.x;
-        }
-        if(config.y){
+        //}
+        //if(config.y){
             this.y = config.y;
-        }
+        //}
         this.config = config;
 
         this.scene = config.scene;
-        this.back = this.scene.add.image(this.x,this.y,config.key);
+        this.back = this.scene.add.image(config.x,config.y,config.key);
         this.add(this.back)
 
         

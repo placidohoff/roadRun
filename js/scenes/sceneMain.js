@@ -24,6 +24,9 @@ class SceneMain extends Phaser.Scene {
 
         this.road2.car.setFrame(1);
 
+        // this.road.moveLines();
+        // this.road2.moveLines();
+
         //The following comes from our Toolbox to implement the scoreBox:
         emitter = new Phaser.Events.EventEmitter();      
         controller = new Controller();
@@ -58,7 +61,7 @@ class SceneMain extends Phaser.Scene {
     update(){
         this.road.moveLines();
         this.road.moveObstacle();
-        this.road2.moveObstacle();
+        this.road2.moveLines();
         this.road2.moveObstacle();
     }
     stopMusic(){
