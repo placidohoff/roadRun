@@ -43,7 +43,7 @@ class Road extends Phaser.GameObjects.Container{
     changeLanes(){
         if(!model.gameOver){
             //PLAY-SOUND LOGIC:
-            emitter.emit(G.PLAY_SOUND, "whoosh")
+            //emitter.emit(G.PLAY_SOUND, "whoosh")
             //If on the right, go left, vice versa:
             if(this.car.x > 0){
                 this.car.x = -this.displayWidth/4;
@@ -134,7 +134,6 @@ class Road extends Phaser.GameObjects.Container{
                     callbackScope: this.scene,
                     loop: false
                 })
-                
             }else{
                 this.car.alpha = 1;
             }

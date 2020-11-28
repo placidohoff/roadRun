@@ -33,7 +33,9 @@ class SceneMain extends Phaser.Scene {
 
         //TODO: Get sound playing, create an instance of MediaManager:
         this.mediaManager = new MediaManager({scene: this})
-        this.mediaManager.setBackgroundMusic('backgroundMusic')
+        //this.mediaManager.setBackgroundMusic('backgroundMusic')
+        //this.stopMusic();
+        //this.mediaManager.stop();
         //emitter.on(G.MUSIC_STOP, this.stopMusic);
 
         this.sb = new ScoreBox({scene: this});
